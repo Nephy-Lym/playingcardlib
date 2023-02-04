@@ -5,55 +5,30 @@ public class PlayingCard {
         SPADES, DIAMONDS, CLUBS, HEARTS
     }
 
-    private enum Value {
-        ACE (1),
-        TWO (2),
-        THREE (3),
-        FOUR (4),
-        FIVE (5),
-        SIX (6),
-        SEVEN (7),
-        EIGHT (8),
-        NINE (9),
-        TEN (10),
-        JACK (11),
-        QUEEN (12),
-        KING (13);
-
-        private int mNumValue;
-
-        Value(int pNumValue) {
-            setNumValue(pNumValue);
+    private enum Pip {
+        ACE, TWO, THREE,
+        FOUR, FIVE, SIX,
+        SEVEN, EIGHT, NINE,
+        TEN, JACK, QUEEN, KING
         }
 
-        protected void setNumValue(int pNumValue) {
-            mNumValue = pNumValue;
-        }
 
-        public int getNumValue() {
-            return mNumValue;
-        }
-    }
-
-    private final Value mValue;
+    private final Pip mPip;
+    private final int mValue;
     private final Suit mSuit;
 
-    public PlayingCard(Value pValue, Suit pSuit) {
+    public PlayingCard(Pip pPip, int pValue, Suit pSuit) {
+        mPip = pPip;
         mValue = pValue;
         mSuit = pSuit;
     }
 
-    public void setNumValue(int pNumValue) {
-        getValue().setNumValue(10);
+    public Pip getPip() {
+        return mPip;
     }
 
-
-    public Value getValue() {
+    public int getValue() {
         return mValue;
-    }
-
-    public int getNumValue() {
-        return getValue().getNumValue();
     }
 
     public Suit getSuit() {
@@ -68,12 +43,13 @@ public class PlayingCard {
 
         PlayingCard otherCard = (PlayingCard) other;
 
-        return this.getValue() == otherCard.getValue()
-                && this.getSuit() == otherCard.getSuit();
+        return otherCard.getPip() == this.getPip()
+            && otherCard.getSuit() == this.getSuit();
     }
 
     @Override
     public String toString() {
-        return getValue().toString() + " of " + getSuit().toString();
+        return this.getPip().toString() + " of " + this.getSuit().toString();
     }
+
 }
