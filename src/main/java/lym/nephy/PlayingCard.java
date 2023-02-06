@@ -1,18 +1,6 @@
 package lym.nephy;
 
 public class PlayingCard {
-    private enum Suit {
-        SPADES, DIAMONDS, CLUBS, HEARTS
-    }
-
-    private enum Pip {
-        ACE, TWO, THREE,
-        FOUR, FIVE, SIX,
-        SEVEN, EIGHT, NINE,
-        TEN, JACK, QUEEN, KING
-        }
-
-
     private final Pip mPip;
     private final int mValue;
     private final Suit mSuit;
